@@ -6,7 +6,7 @@ target/
 /src/main/resources/application.properties
 /src/main/resources/application.yml
 
-
+**/applicatiom.propert
 ### STS ###
 .apt_generated
 .classpath
