@@ -1,0 +1,15 @@
+spring.application.name=smartquiz
+
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/your_dbname
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.format_sql = true
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.show-sql= true
+
+
+jwt.secret = your_secret_key
