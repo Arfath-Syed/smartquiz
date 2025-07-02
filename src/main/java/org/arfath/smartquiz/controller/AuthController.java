@@ -1,6 +1,6 @@
 package org.arfath.smartquiz.controller;
 
-import org.arfath.smartquiz.Model.UserEntity;
+import org.arfath.smartquiz.model.UserEntity;
 import org.arfath.smartquiz.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

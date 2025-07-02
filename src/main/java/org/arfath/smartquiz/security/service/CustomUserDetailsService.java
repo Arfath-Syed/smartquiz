@@ -1,6 +1,6 @@
 package org.arfath.smartquiz.security.service;
 
-import org.arfath.smartquiz.Model.UserEntity;
+import org.arfath.smartquiz.model.UserEntity;
 import org.arfath.smartquiz.repository.UserRepository;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

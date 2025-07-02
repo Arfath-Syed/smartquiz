@@ -1,6 +1,6 @@
 package org.arfath.smartquiz.service;
 
-import org.arfath.smartquiz.Model.UserEntity;
+import org.arfath.smartquiz.model.UserEntity;
 import org.arfath.smartquiz.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
