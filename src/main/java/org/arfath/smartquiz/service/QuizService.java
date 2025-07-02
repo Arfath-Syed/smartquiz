@@ -17,10 +17,12 @@ import java.util.List;
 public class QuizService {
     private final QuizRepository quizRepository;
     private final QuizAttemptRepository quizAttemptRepository;
+    private final AiQuizService aiQuizService;
 
-    public QuizService(QuizRepository quizRepository, QuizAttemptRepository quizAttemptRepository) {
+    public QuizService(QuizRepository quizRepository, QuizAttemptRepository quizAttemptRepository, AiQuizService aiQuizService) {
         this.quizRepository = quizRepository;
         this.quizAttemptRepository = quizAttemptRepository;
+        this.aiQuizService = aiQuizService;
     }
 
 
@@ -28,12 +30,15 @@ public class QuizService {
         return quizRepository.save(quiz);
     }
 
+
     public List<QuizEntity> getAllQuizzes() {
         return quizRepository.findAll();
     }
 
+
+
     public List<QuizAttemptDto> getQuizzesForAttempt() {
-        return quizRepository.findAll().stream().map(q -> new QuizAttemptDto(
+        return quizRepository.findByApprovedTrue().stream().map(q -> new QuizAttemptDto(
                 q.getId(),
                 q.getQuestion(),
                 q.getOptionA(),
@@ -87,4 +92,42 @@ public class QuizService {
         return quizAttemptRepository.findAll();
     }
 
+
+    public String approveQuiz( Integer quizId) {
+        QuizEntity quiz = quizRepository.findById(quizId)
+                .orElseThrow(() -> new RuntimeException("Quiz not found"));
+
+        quiz.setApproved(true);
+        quizRepository.save(quiz);
+
+        return "Quiz approved successfully";
+    }
+
+    public List<QuizEntity> generateBatch(
+             String topic,
+             int count) {
+
+
+        List<QuizEntity> generatedQuizzes = aiQuizService.generateMultipleQuizzes(topic, count);
+        return generatedQuizzes;
+    }
+
+
+    public List<String> getAvailableTopics() {
+        return quizRepository.findDistinctApprovedTopics();
+    }
+
+
+    public List<QuizAttemptDto> getAppovedQuizzesByTopic(String topic) {
+        return quizRepository.findByTopicAndApprovedTrue(topic)
+                .stream()
+                .map(q -> new QuizAttemptDto(
+                        q.getId(),
+                        q.getQuestion(),
+                        q.getOptionA(),
+                        q.getOptionB(),
+                        q.getOptionC(),
+                        q.getOptionD()
+                )).toList();
+    }
 }

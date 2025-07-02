@@ -27,4 +27,12 @@ public class QuizEntity {
     @Column(nullable = false)
     private String correctAnswer;
 
+    @Column(nullable = false)
+    private String topic;
+
+    @Column(nullable = false)
+    private boolean approved = false;
+
+
+
 }
