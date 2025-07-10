@@ -3,6 +3,13 @@
 SmartQuiz is a secure, AI-driven quiz platform built with Java, Spring Boot, and OpenAI. It allows Admins to generate quizzes by topic, moderate them, and provides Users the ability to attempt quizzes with scoring and history tracking.
 
 ---
+## 🌐 Live Demo
+
+👉 [Try the app](http://18.217.53.188)
+
+🧪 Admin Login (Demo):  
+Username: `admin`  
+Password: `admin123`
 
 ## ✨ Features
 
